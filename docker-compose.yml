@@ -1,0 +1,40 @@
+---
+version: "2"
+
+volumes:
+  elixir-artifacts:
+
+services:
+  app:
+    #platform: linux/amd64
+    environment:
+      MIX_ENV: dev
+      #MIX_BUILD_ROOT: /opt/elixir-artifacts/_build
+      #MIX_DEPS_PATH: /opt/elixir-artifacts/deps
+      PGHOST: "db"
+      PGDATABASE: "shitr_dev"
+      PGUSER: "postgres"
+      PGPASSWORD: "postgres"
+      port: 5432,
+      #PGHOST: ${PGHOST}
+      #PGDATABASE: ${PGDATABASE}
+      #PGUSER: ${PGUSER}
+      #PGPASSWORD: ${PGPASSWORD}
+    build: .
+    ports:
+      - "4000:4000"
+    volumes:
+      - .:/app
+      #- elixir-artifacts:/opt/elixir-artifacts
+    depends_on:
+      - db
+  db:
+    #platform: linux/amd64
+    image: postgis/postgis:14-3.4-alpine
+    ports:
+      - "5435:5432"
+    environment:
+      POSTGRES_PASSWORD: "postgres"
+      POSTGRES_USER: "postgres"
+      POSTGRES_DB: "shitr_dev"
+      POSTGRES_MULTIPLE_DATABASES: "shitr_dev,shitr_test"
