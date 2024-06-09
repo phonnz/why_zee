@@ -15,7 +15,8 @@ services:
       PGDATABASE: "shitr_dev"
       PGUSER: "postgres"
       PGPASSWORD: "postgres"
-      port: 5432,
+      port: 5432
+      PGDATABASETEST: "shitr_test"
       #PGHOST: ${PGHOST}
       #PGDATABASE: ${PGDATABASE}
       #PGUSER: ${PGUSER}

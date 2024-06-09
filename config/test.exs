@@ -1,15 +1,18 @@
 import Config
 
+# Only in tests, remove the complexity from the password hashing algorithm
+config :bcrypt_elixir, :log_rounds, 1
+
 # Configure your database
 #
 # The MIX_TEST_PARTITION environment variable can be used
 # to provide built-in test partitioning in CI environment.
 # Run `mix help test` for more information.
 config :why_zee, WhyZee.Repo,
-  username: "postgres",
-  password: "postgres",
-  hostname: "localhost",
-  database: "why_zee_test#{System.get_env("MIX_TEST_PARTITION")}",
+  username: System.get_env("PGPASSWORD"),
+  password: System.get_env("PGUSER"),
+  hostname: System.get_env("PGHOST", "db"),
+  database: System.get_env("PGDATABASETEST"),
   pool: Ecto.Adapters.SQL.Sandbox,
   pool_size: System.schedulers_online() * 2
 
