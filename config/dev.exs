@@ -2,10 +2,10 @@ import Config
 
 # Configure your database
 config :why_zee, WhyZee.Repo,
-username: System.get_env("PGPASSWORD"),
-password: System.get_env("PGUSER"),
-hostname: System.get_env("PGHOST", "db"),
-database: System.get_env("PGDATABASE"),
+  username: System.get_env("PGPASSWORD"),
+  password: System.get_env("PGUSER"),
+  hostname: System.get_env("PGHOST", "db"),
+  database: System.get_env("PGDATABASE"),
   stacktrace: true,
   show_sensitive_data_on_connection_error: true,
   pool_size: 10

@@ -36,7 +36,13 @@ defmodule WhyZee.ContentTest do
 
     test "update_post/2 with valid data updates the post" do
       post = post_fixture()
-      update_attrs = %{title: "some updated title", body: "some updated body", views: 43, likes: 43}
+
+      update_attrs = %{
+        title: "some updated title",
+        body: "some updated body",
+        views: 43,
+        likes: 43
+      }
 
       assert {:ok, %Post{} = post} = Content.update_post(post, update_attrs)
       assert post.title == "some updated title"

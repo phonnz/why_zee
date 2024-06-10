@@ -57,7 +57,6 @@ defmodule WhyZeeWeb.PostLive.FormComponent do
   end
 
   defp save_post(socket, :edit, post_params) do
-
     case Content.update_post(socket.assigns.post, post_params) do
       {:ok, post} ->
         notify_parent({:saved, post})
@@ -74,6 +73,7 @@ defmodule WhyZeeWeb.PostLive.FormComponent do
 
   defp save_post(socket, :new, post_params) do
     current_user = socket.assigns.current_user
+
     case Content.create_post(current_user, post_params) do
       {:ok, post} ->
         notify_parent({:saved, post})

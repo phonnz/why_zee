@@ -88,6 +88,5 @@ defmodule WhyZeeWeb.Router do
 
     live "/posts/:id", PostLive.Show, :show
     live "/posts/:id/show/edit", PostLive.Show, :edit
-
   end
 end
