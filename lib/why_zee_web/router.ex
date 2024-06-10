@@ -20,7 +20,7 @@ defmodule WhyZeeWeb.Router do
   scope "/", WhyZeeWeb do
     pipe_through :browser
 
-    get "/", PageController, :home
+    # get "/", PageController, :home
   end
 
   # Other scopes may use custom stacks.
@@ -68,6 +68,10 @@ defmodule WhyZeeWeb.Router do
       on_mount: [{WhyZeeWeb.UserAuth, :ensure_authenticated}] do
       live "/users/settings", UserSettingsLive, :edit
       live "/users/settings/confirm_email/:token", UserSettingsLive, :confirm_email
+
+      live "/posts", PostLive.Index, :index
+      live "/posts/new", PostLive.Index, :new
+      live "/posts/:id/edit", PostLive.Index, :edit
     end
   end
 
@@ -80,13 +84,11 @@ defmodule WhyZeeWeb.Router do
       on_mount: [{WhyZeeWeb.UserAuth, :mount_current_user}] do
       live "/users/confirm/:token", UserConfirmationLive, :edit
       live "/users/confirm", UserConfirmationInstructionsLive, :new
+
+      live "/posts/:id/show/edit", PostLive.Show, :edit
     end
 
-    live "/posts", PostLive.Index, :index
-    live "/posts/new", PostLive.Index, :new
-    live "/posts/:id/edit", PostLive.Index, :edit
-
     live "/posts/:id", PostLive.Show, :show
-    live "/posts/:id/show/edit", PostLive.Show, :edit
+    live "/", FeedLive.Index, :index
   end
 end

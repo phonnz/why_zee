@@ -18,4 +18,18 @@ mix phx.server
 
 Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
 
+## Game Plan
 
+The following boilerplate holds within it 
+- aut flows generated via mix phx.gen.auth
+- posts, greating a post will add it to the user
+- oban is already setup
+
+## goals
+primary goals
+- the posts page should only show posts from the user
+- create a new page that whows all the posts and the ability to "like" it.
+
+secondary
+- each post should create a "like object"
+- we need an oban job that periodically counts up the likes for a post and updates the like count

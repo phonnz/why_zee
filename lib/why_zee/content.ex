@@ -21,6 +21,12 @@ defmodule WhyZee.Content do
     Repo.all(Post)
   end
 
+  def list_user_posts(user_id) do
+    from(p in Post)
+    |> where([p], p.user_id == ^user_id)
+    |> Repo.all()
+  end
+
   @doc """
   Gets a single post.
 

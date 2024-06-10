@@ -7,8 +7,8 @@ defmodule WhyZee.Content.Post do
   schema "posts" do
     field :title, :string
     field :body, :string
-    field :views, :integer
-    field :likes, :integer
+    field :views, :integer, default: 0
+    field :likes, :integer, default: 0
     field :user_id, :binary_id
 
     timestamps(type: :utc_datetime)
@@ -18,6 +18,6 @@ defmodule WhyZee.Content.Post do
   def changeset(post, attrs) do
     post
     |> cast(attrs, [:title, :body, :views, :likes])
-    |> validate_required([:title, :body, :views, :likes])
+    |> validate_required([:title, :body])
   end
 end

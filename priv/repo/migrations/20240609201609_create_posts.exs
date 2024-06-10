@@ -6,8 +6,8 @@ defmodule WhyZee.Repo.Migrations.CreatePosts do
       add :id, :binary_id, primary_key: true
       add :title, :string
       add :body, :text
-      add :views, :integer
-      add :likes, :integer
+      add :views, :integer, default: 0
+      add :likes, :integer, default: 0
       add :user_id, references(:users, on_delete: :delete_all, type: :binary_id)
 
       timestamps(type: :utc_datetime)

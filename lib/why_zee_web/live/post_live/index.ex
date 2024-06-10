@@ -26,7 +26,11 @@ defmodule WhyZeeWeb.PostLive.Index do
         socket
       end
 
-    {:ok, stream(socket, :posts, Content.list_posts())}
+    if socket.assigns.current_user do
+      {:ok, stream(socket, :posts, Content.list_user_posts(socket.assigns.current_user.id))}
+    else
+      {:ok, stream(socket, :posts, Content.list_posts())}
+    end
   end
 
   @impl true
