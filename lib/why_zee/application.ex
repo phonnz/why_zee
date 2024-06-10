@@ -17,7 +17,8 @@ defmodule WhyZee.Application do
       # Start a worker by calling: WhyZee.Worker.start_link(arg)
       # {WhyZee.Worker, arg},
       # Start to serve requests, typically the last entry
-      WhyZeeWeb.Endpoint
+      WhyZeeWeb.Endpoint,
+      {Oban, Application.fetch_env!(:why_zee, Oban)}
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html

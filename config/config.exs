@@ -22,6 +22,11 @@ config :why_zee, WhyZeeWeb.Endpoint,
   pubsub_server: WhyZee.PubSub,
   live_view: [signing_salt: "FbkI0zV8"]
 
+config :why_zee, Oban,
+  engine: Oban.Engines.Basic,
+  queues: [default: 10],
+  repo: WhyZee.Repo
+
 # Configures the mailer
 #
 # By default it uses the "Local" adapter which stores the emails
