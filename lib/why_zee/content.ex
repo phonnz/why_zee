@@ -18,7 +18,10 @@ defmodule WhyZee.Content do
 
   """
   def list_posts do
-    Repo.all(Post)
+    from(p in Post)
+    |> join(:left, [p], u in assoc(p, :user), as: :user)
+    |> preload([p, u], user: u)
+    |> Repo.all()
   end
 
   def list_user_posts(user_id) do
