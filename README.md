@@ -27,9 +27,12 @@ The following boilerplate holds within it
 
 ## goals
 primary goals
-- the posts page should only show posts from the user
-- create a new page that whows all the posts and the ability to "like" it.
+- like a post to increase the like count
 
 secondary
 - each post should create a "like object"
+- if you liked a post previously, the button should be bold and clciking it will "unlike" it.
 - we need an oban job that periodically counts up the likes for a post and updates the like count
+
+bonus
+- when someone else likes your post, you get a notification
