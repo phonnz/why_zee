@@ -1,1 +1,11 @@
 <h1>#feed goes here</h1>
+
+<div>
+  <%= for {_id, post} <- @streams.posts do %>
+    <div>
+      <h2><%= post.title %></h2>
+      <p><%= post.body %></p>
+      <p><a href="#">like?</a> <%= post.likes %> so far</p>
+    </div>
+  <% end %>
+</div>
