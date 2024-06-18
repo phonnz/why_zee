@@ -9,10 +9,9 @@ defmodule WhyZee.Content.Post do
     field :body, :string
     field :views, :integer, default: 0
     field :likes, :integer, default: 0
-    #field :user_id, :binary_id
+    # field :user_id, :binary_id
 
     belongs_to :user, WhyZee.Accounts.User
-
     timestamps(type: :utc_datetime)
   end
 

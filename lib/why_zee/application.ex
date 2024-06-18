@@ -15,7 +15,7 @@ defmodule WhyZee.Application do
       # Start the Finch HTTP client for sending emails
       {Finch, name: WhyZee.Finch},
       # Start a worker by calling: WhyZee.Worker.start_link(arg)
-      # {WhyZee.Worker, arg},
+      {WhyZee.Content.Servers.LikeServer, []},
       # Start to serve requests, typically the last entry
       WhyZeeWeb.Endpoint,
       {Oban, Application.fetch_env!(:why_zee, Oban)}
