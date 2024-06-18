@@ -27,4 +27,11 @@ defmodule WhyZeeWeb.FeedLive.Index do
 
     {:ok, stream(socket, :posts, Content.list_posts())}
   end
+
+  @impl true
+  def handle_event("like", %{"id" => post_id}, socket) do
+    Content.increase_post_likes(post_id, socket.assigns.current_user.id)
+
+    {:noreply, stream(socket, :posts, Content.list_posts())}
+  end
 end
